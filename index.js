@@ -2,7 +2,6 @@ const express = require('express')
 const app = express(); 
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
-const passport = require('passport');
 var path = require('path');
 app.set('views', path.join(__dirname, 'views'));
 var cors = require('cors');
