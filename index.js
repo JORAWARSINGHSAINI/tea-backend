@@ -29,7 +29,9 @@ app.use(express.static('public'))
 app.use(express.json({
   type: ['application/json', 'text/plain']
 }))
-
+app.get("/",(req,res)=>{
+  res.send("Working!");
+})
 app.use('/class', require('./routes/new_class'));
 app.use('/assignment',require('./routes/new_assignment'));
 app.use('/test',require('./routes/new_test'));
