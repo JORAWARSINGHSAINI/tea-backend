@@ -1,6 +1,5 @@
 const express = require('express'); 
 var router = express.Router(); 
-const mongoose = require('mongoose');
 const Assignment = require('../models/assignment');
 
 router.get('/',async function (req, res) {

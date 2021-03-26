@@ -7,7 +7,12 @@ var path = require('path');
 app.set('views', path.join(__dirname, 'views'));
 var cors = require('cors');
 
-mongoose.connect('mongodb://localhost/education',{ useUnifiedTopology: true,useNewUrlParser:true });
+const connectdb = async()=>{
+ await mongoose.connect('mongodb+srv://jorawarsingh12:Jorawar@123@tea.idu4v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+        ,{ useUnifiedTopology: true,useNewUrlParser:true });
+  console.log('connected!');
+}
+connectdb();
 mongoose.Promise = global.Promise;
 
 app.use(cors());
@@ -28,11 +33,12 @@ app.use(express.json({
 app.use('/class', require('./routes/new_class'));
 app.use('/assignment',require('./routes/new_assignment'));
 app.use('/test',require('./routes/new_test'));
+app.use('/student', require('./routes/new_student'));
+app.use('/teacher',require('./routes/new_teacher'));
+app.use('/institution',require('./routes/new_institution'));
 
 
-// error page
-
-
-app.listen(5000, () => {
-    console.log(`Example app listening at http://localhost:5000`)
+let port = process.env.PORT || 3000
+app.listen(port, () => {
+    console.log(`Started API ${port}`)
   });

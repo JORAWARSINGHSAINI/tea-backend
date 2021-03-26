@@ -2,13 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const InstitutionSchema = new Schema({
-    name: {
-        type: String,
-        required: [true, 'Name field is required'],
-    },
-    location:{
-        type:String,
-    },
+    name: String,
+    email : String,
+    city: String,
+    country: String,
+    phoneno: String,
     classes: {
         type: Array,
     },

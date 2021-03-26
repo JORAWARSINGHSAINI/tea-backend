@@ -3,12 +3,12 @@ const Schema = mongoose.Schema;
 
 const StudentSchema = new Schema({
     name: String,
-    classes: {
+    password: String,
+    email: String,
+    institution:String,
+    phoneno: String,
+    classes:{
         type: Array,
-    },
-    institution:{
-        type:String,
-    },
+    }
 });
-
-module.exports = StudentSchema;
+module.exports = mongoose.model('student',StudentSchema);

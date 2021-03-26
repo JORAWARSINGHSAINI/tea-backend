@@ -1,10 +1,10 @@
 const express = require('express'); 
 var router = express.Router(); 
-const Class = require('../models/class');
+const Institution = require('../models/institution');
 
 router.get('/',async function (req, res) {
     try{
-        const cl = await Class.findById(req.body.id);
+        const cl = await Institution.findById(req.body.id);
         res.json(cl);    
     }
     catch(err)
@@ -17,7 +17,7 @@ router.get('/',async function (req, res) {
 
 router.post('/',async function (req, res) {
     try{
-    const result = new Class(req.body)
+    const result = new Institution(req.body)
     const c2 = await result.save()
     res.json(c2); 
     }
@@ -30,19 +30,24 @@ router.post('/',async function (req, res) {
 
 router.patch('/',async function (req, res) {
     try{
-        const cl = await Class.findById(req.body.id);
-        if(req.body.para === 'teachers')
+        const cl = await Institution.findById(req.body.id);
+        if(req.body.para === 'classes')
         {
-            cl['teachers'].push(req.body.val);
+            cl['classes'].push(req.body.val);
         }
         else if(req.body.para === 'students')
         {
             cl['students'].push(req.body.val);
         }
+        else if(req.body.para === 'teachers')
+        {
+            cl['teachers'].push(req.body.val);
+        }
         else
         {
             cl[req.body.para] = req.body.val;
         }
+        
         const c2 = await cl.save()
         res.json(c2);    
     }
@@ -57,7 +62,7 @@ router.patch('/',async function (req, res) {
 router.delete('/',async function (req, res) {
     try{
         
-        const cl = await Class.findByIdAndDelete(req.body.id);
+        const cl = await Institution.findByIdAndDelete(req.body.id);
         res.json(cl);    
     }
     catch(err)

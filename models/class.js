@@ -5,7 +5,7 @@ const ClassSchema = new Schema({
     
     'name': String,
     'students': Array,
-    'teacher': Array,
+    'teachers': Array,
     'dateCreated':{
         type: Date,
         default: Date.now()
