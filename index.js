@@ -1,13 +1,13 @@
 const express = require('express')
 const app = express(); 
+require('dotenv').config()
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 var path = require('path');
 app.set('views', path.join(__dirname, 'views'));
 var cors = require('cors');
-
 const connectdb = async()=>{
- await mongoose.connect('mongodb+srv://jorawarsingh12:Jorawar@123@tea.idu4v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+ await mongoose.connect(`mongodb+srv://jorawarsingh12:${process.env.DB_KEY}@tea.idu4v.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
         ,{ useUnifiedTopology: true,useNewUrlParser:true });
   console.log('connected!');
 }

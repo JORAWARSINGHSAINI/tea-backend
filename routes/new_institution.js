@@ -2,9 +2,9 @@ const express = require('express');
 var router = express.Router(); 
 const Institution = require('../models/institution');
 
-router.get('/',async function (req, res) {
+router.get('/:id',async function (req, res) {
     try{
-        const cl = await Institution.findById(req.body.id);
+        const cl = await Institution.findById(req.params.id);
         res.json(cl);    
     }
     catch(err)
